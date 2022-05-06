@@ -1,0 +1,11 @@
+<a href="../product/index" class="btn bg-dark m-3">Products</a>
+<a href="viewOrder" class="btn bg-light m-3">View Orders</a>
+<?php
+// if (count($find) > 0) {
+    echo '<table id="myTable"><thead><th>NAME</th><th>CATEGORY</th><th>PRICE</th><th>STOCK</th><th>ORDER</th></thead><tbody>';
+    foreach ($find as $f) {
+        echo '<tr><td>' . $f->name . '</td><td>' . $f->category . '</td><td>' . $f->price . '</td><td>' . $f->stock . '</td><td><form action="productDetail" method="POST" ><button name="product" class="btn bg-primary" value="'.$f->_id.'" >Order</button></form></td></tr>';
+    }
+    echo '<tbody><table>';
+// }
+?>

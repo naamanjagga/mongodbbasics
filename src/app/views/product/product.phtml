@@ -1,0 +1,98 @@
+<form action="addproduct" method="POST">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>Category Name:</td>
+            <td><input type="text" name="category"></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" name="price"></td>
+        </tr>
+        <tr>
+            <td>Stock:</td>
+            <td><input type="text" name="stock"></td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Meta Fields:</h5>
+            </td>
+        </tr>
+        <tr id="meta"></tr>
+        <tr>
+            <td><a class="btn bg-light" onclick="metaAdd()" name="btn1">+</a></td>
+            <td><a class="btn bg-light" onclick="metaSub()" name="btn2">-</a></td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Variations:</h5>
+            </td>
+        </tr>
+        <tr id="vari"></tr>
+        <tr>
+            <td><a class="btn bg-light" onclick="variAdd()" name="btn1">+</a></td>
+            <td><a class="btn bg-light" onclick="variSub()" name="btn2">-</a></td>
+        </tr>
+        <tr>
+            <td><button type="submit" class="mt-3 btn bg-primary" name="btn">ADD</button></td>
+        </tr>
+
+    </table>
+</form>
+<script>
+    var meta = 0;
+    var vari = 0;
+
+    function metaAdd() {
+        meta++;
+        meta = 1;
+        var html = '';
+        for (var i = 1; i <= meta; i++) {
+            html += '<td><input type="text" name="label" placeholder="label"></td>';
+            html += '<td><input type="text" name="value" placeholder="value"></td><br>';
+        }
+        document.getElementById('meta').innerHTML = html;
+    }
+
+    function metaSub() {
+        if (meta > 0) {
+            meta--;
+            meta = 0;
+            var html = '';
+            for (var i = 1; i <= meta; i++) {
+                html += '<td><input type="text" name="label" placeholder="label"></td>';
+                html += '<td><input type="text" name="value" placeholder="value"></td>';
+            }
+            document.getElementById('meta').innerHTML = html;
+        }
+    }
+
+    function variAdd() {
+        vari++;
+        vari = 1;
+        var html = '';
+        for (var i = 1; i <= vari; i++) {
+            html += '<td><input type="text" name="v_name" placeholder="type"></td>';
+            html += '<td><input type="text" name="v_value" placeholder="value"></td>';
+            html += '<td><input type="text" name="v_price" placeholder="price"></td>';
+        }
+        document.getElementById('vari').innerHTML = html;
+    }
+
+    function variSub() {
+        if (vari > 0) {
+            vari--;
+            vari = 0;
+            var html = '';
+            for (var i = 1; i <= vari; i++) {
+                html += '<td><input type="text" name="v_name" placeholder="label"></td>';
+                html += '<td><input type="text" name="v_value" placeholder="value"></td>';
+                html += '<td><input type="text" name="v_price" placeholder="price"></td>';
+            }
+            document.getElementById('vari').innerHTML = html;
+        }
+    }
+</script>

@@ -1,0 +1,76 @@
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <form action="viewOrder" method="POST"><select onchange="this.form.submit()" name="filter">
+                        <option>filter with status</option>
+                        <option value="Paid">Paid</option>
+                        <option value="Processing">Processing</option>
+                        <option value="Dispatched">Dispatched</option>
+                        <option value="Shipped">Shipped</option>
+                        <option value="Refunded">Refunded</option>
+                    </select></form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form action="viewOrder" method="POST"><select onchange="this.form.submit()" name="dateFilter">
+                        <option>filter with date</option>
+                        <option value="today">today</option>
+                        <option value="this_week">this week</option>
+                        <option value="this_month">this month</option>
+                        <option value="custom">custom</option>
+                    </select></form>
+            </td>
+        </tr>
+        <?php
+        if (isset($show)) { ?>
+            <tr>
+                <td>
+
+                    <form action="viewOrder" method="POST">
+                        <input type="text" name="startDate" placeholder="start date">
+                        <input type="text" name="endDate" placeholder="end date">
+                        <input type="submit" value="Find" name="dateCustom">
+                    </form>
+
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+<table id="myTable">
+    <thead>
+        <th>NAME</th>
+        <th>CATEGORY</th>
+        <th>PRICE</th>
+        <th>STOCK</th>
+        <th>VIEW</th>
+        <th>UPDATE</th>
+    </thead>
+    <tbody>
+
+        <?php
+        if (isset($find)) {
+            foreach ($find as $f) { ?>
+                <tr>
+                    <td><?php echo $f->costumer_name; ?></td>
+                    <td><?php echo $f->name; ?></td>
+                    <td><?php echo $f->category; ?></td>
+                    <td> <?php echo $f->price; ?></td>
+                    <td> <?php echo $f->quantity; ?></td>
+                    <td>
+                        <form action="changeStatus" method="POST"><select onchange="this.form.submit()" name="status">
+                                <option><?php echo $f->status; ?></option>
+                                <option value="Paid,<?php echo $f->_id; ?>">Paid</option>
+                                <option value="Processing,<?php echo $f->_id; ?>">Processing</option>
+                                <option value="Dispatched,<?php echo $f->_id; ?>">Dispatched</option>
+                                <option value="Shipped,<?php echo $f->_id; ?>">Shipped</option>
+                                <option value="Refunded,<?php echo $f->_id; ?>">Refunded</option>
+                            </select></form>
+                    </td>
+                </tr>
+        <?php }
+            echo '<tbody><table>';
+        }
+        ?>

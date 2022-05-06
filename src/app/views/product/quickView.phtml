@@ -1,0 +1,50 @@
+<?php
+foreach ($find as $f) {
+?>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" value="<?php echo $f->name; ?>" name="name"></td>
+        </tr>
+        <tr>
+            <td>Category Name:</td>
+            <td><input type="text" value="<?php echo $f->category; ?>" name="category"></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="text" value="<?php echo $f->price; ?>" name="price"></td>
+        </tr>
+        <tr>
+            <td>Stock:</td>
+            <td><input type="text" value="<?php echo $f->stock; ?>" name="stock"></td>
+        </tr>
+        <?php if (isset($f->meta_fields)) { ?>
+        <tr>
+            <td>
+                <h5>Meta Fields:</h5>
+            </td>
+        </tr>
+      
+
+            <tr id="meta"></tr>
+            <tr>
+                <td><input type="text" value="<?php echo $f->meta_fields[0]; ?>" name="label" placeholder="label"></td>
+                <td><input type="text" value="<?php echo $f->meta_fields[1]; ?>" name="value" placeholder="value"></td>
+            </tr>
+        <?php } ?>
+        <tr>
+            <td>
+                <h5>Variations:</h5>
+            </td>
+        </tr>
+        <tr id="vari"></tr>
+        <tr>
+            <td><input type="text" value="<?php echo $f->Variations[0]; ?>" name="v_name" placeholder="name"></td>
+            <td><input type="text" value="<?php echo $f->Variations[1]; ?>" name="v_value" placeholder="value"></td>
+            <td><input type="text" value="<?php echo $f->Variations[2]; ?>" name="v_price" placeholder="value"></td>
+        </tr>
+
+    </table>
+<?php
+}
+?>

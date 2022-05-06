@@ -1,0 +1,52 @@
+<form action="orderProduct" method="POST">
+    <?php
+    foreach ($find as $f) {
+    ?>
+        <table>
+            <tr>
+                <td>Costumer name:</td>
+                <td><input type="text" name="costumerName"></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" value="<?php echo $f->name; ?>" name="name"></td>
+            </tr>
+            <tr>
+                <td>Category Name:</td>
+                <td><input type="text" value="<?php echo $f->category; ?>" name="category"></td>
+            </tr>
+            <?php if ($f->Variations != null) {
+            ?>
+                <tr>
+                    <td><?php echo $f->Variations[0]; ?></td>
+                    <td><input type="text" value="<?php echo $f->Variations[1]; ?>" name="price"></td>
+                </tr>
+                <tr>
+                    <td>Price:</td>
+                    <td><input type="text" value="<?php echo $f->Variations[2]; ?>" name="price"></td>
+                </tr>
+            <?php
+            } else { ?>
+                <tr>
+                    <td>Price:</td>
+                    <td><input type="text" value="<?php echo $f->price; ?>" name="price"></td>
+                </tr>
+            <?php } ?>
+            <tr>
+                <td>Quantity:</td>
+                <td><input type="text" name="quantity"></td>
+            </tr>
+            <tr>
+                <td>
+                    <p>*Please fill customer name and quantity only</p>
+                </td>
+            </tr>
+            <tr>
+                <td><button type="submit" value="<?php echo $f->_id; ?>" class="mt-3 btn bg-primary" name="updatebtn">Order Now</button></td>
+            </tr>
+
+        </table>
+    <?php
+    }
+    ?>
+</form>
